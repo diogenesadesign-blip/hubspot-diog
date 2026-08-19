@@ -1,0 +1,309 @@
+[
+  {
+    "id": "grupo_imagens",
+    "name": "grupo_imagens",
+    "label": "Imagens (mosaico)",
+    "type": "group",
+    "expanded": true,
+    "children": [
+      {
+        "id": "imagem1",
+        "name": "imagem1",
+        "label": "Imagem 1 (grande, sem efeito)",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "default": { "src": "", "alt": "" }
+      },
+      {
+        "id": "canto_shape1",
+        "name": "canto_shape1",
+        "label": "Canto menor — shape 1",
+        "type": "choice",
+        "display": "select",
+        "choices": [["bl", "Inferior esquerdo"], ["tl", "Superior esquerdo"], ["tr", "Superior direito"], ["br", "Inferior direito"]],
+        "default": "bl"
+      },
+      {
+        "id": "imagem2",
+        "name": "imagem2",
+        "label": "Imagem 2 (quadrada, efeito vermelho)",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "default": { "src": "", "alt": "" }
+      },
+      {
+        "id": "opacidade_efeito2",
+        "name": "opacidade_efeito2",
+        "label": "Opacidade do efeito (vermelho #D71C37)",
+        "type": "number",
+        "display": "slider",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "suffix": "%",
+        "default": 55
+      },
+      {
+        "id": "canto_shape2",
+        "name": "canto_shape2",
+        "label": "Canto menor — shape 2",
+        "type": "choice",
+        "display": "select",
+        "choices": [["bl", "Inferior esquerdo"], ["tl", "Superior esquerdo"], ["tr", "Superior direito"], ["br", "Inferior direito"]],
+        "default": "bl"
+      },
+      {
+        "id": "imagem3",
+        "name": "imagem3",
+        "label": "Imagem 3 (comprida, efeito de cor)",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "default": { "src": "", "alt": "" }
+      },
+      {
+        "id": "cor_efeito3",
+        "name": "cor_efeito3",
+        "label": "Cor do efeito da imagem 3",
+        "type": "color",
+        "default": { "color": "#F0AD42", "opacity": 100 }
+      },
+      {
+        "id": "opacidade_efeito3",
+        "name": "opacidade_efeito3",
+        "label": "Opacidade do efeito da imagem 3",
+        "type": "number",
+        "display": "slider",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "suffix": "%",
+        "default": 60
+      },
+      {
+        "id": "canto_shape3",
+        "name": "canto_shape3",
+        "label": "Canto menor — shape 3",
+        "type": "choice",
+        "display": "select",
+        "choices": [["bl", "Inferior esquerdo"], ["tl", "Superior esquerdo"], ["tr", "Superior direito"], ["br", "Inferior direito"]],
+        "default": "bl"
+      },
+      {
+        "id": "arredondamento",
+        "name": "arredondamento",
+        "label": "Arredondamento base das imagens (px)",
+        "help_text": "Proporção IPOG: 3 cantos = valor total, 1 canto = valor ÷ 3.",
+        "type": "number",
+        "display": "slider",
+        "min": 0,
+        "max": 60,
+        "step": 1,
+        "suffix": "px",
+        "default": 34
+      }
+    ]
+  },
+  {
+    "id": "grupo_selo",
+    "name": "grupo_selo",
+    "label": "Selo (PÓS / MBA)",
+    "type": "group",
+    "expanded": true,
+    "children": [
+      {
+        "id": "tipo",
+        "name": "tipo",
+        "label": "Tipo",
+        "type": "choice",
+        "display": "select",
+        "choices": [["PÓS", "PÓS"], ["MBA", "MBA"]],
+        "default": "MBA"
+      },
+      {
+        "id": "cor_selo",
+        "name": "cor_selo",
+        "label": "Cor do selo",
+        "type": "color",
+        "default": { "color": "#D71C37", "opacity": 100 }
+      },
+      {
+        "id": "cor_texto_selo",
+        "name": "cor_texto_selo",
+        "label": "Cor do texto",
+        "type": "color",
+        "default": { "color": "#FFFFFF", "opacity": 100 }
+      },
+      {
+        "id": "peso_selo",
+        "name": "peso_selo",
+        "label": "Peso da fonte",
+        "type": "choice",
+        "display": "select",
+        "choices": [["400", "Regular"], ["500", "Medium"], ["600", "SemiBold"], ["700", "Bold"], ["800", "Extra Bold"]],
+        "default": "800"
+      },
+      {
+        "id": "arredondamento_selo",
+        "name": "arredondamento_selo",
+        "label": "Arredondamento do box (px)",
+        "type": "number",
+        "display": "slider",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "suffix": "px",
+        "default": 14
+      }
+    ]
+  },
+  {
+    "id": "grupo_titulo",
+    "name": "grupo_titulo",
+    "label": "Título",
+    "type": "group",
+    "expanded": true,
+    "children": [
+      {
+        "id": "cor_box",
+        "name": "cor_box",
+        "label": "Cor do box do título",
+        "type": "color",
+        "default": { "color": "#F0AD42", "opacity": 100 }
+      },
+      {
+        "id": "titulo",
+        "name": "titulo",
+        "label": "Título do curso",
+        "help_text": "O tamanho ajusta sozinho para caber no box.",
+        "type": "text",
+        "allow_new_line": true,
+        "default": "Executivo em Liderança, Gestão de Negócios e Desenvolvimento Empresarial com IA"
+      },
+      {
+        "id": "cor_titulo",
+        "name": "cor_titulo",
+        "label": "Cor do título",
+        "type": "color",
+        "default": { "color": "#FFFFFF", "opacity": 100 }
+      },
+      {
+        "id": "peso_titulo",
+        "name": "peso_titulo",
+        "label": "Peso da fonte",
+        "type": "choice",
+        "display": "select",
+        "choices": [["400", "Regular"], ["500", "Medium"], ["600", "SemiBold"], ["700", "Bold"], ["800", "Extra Bold"]],
+        "default": "800"
+      }
+    ]
+  },
+  {
+    "id": "grupo_carga",
+    "name": "grupo_carga",
+    "label": "Carga horária e modalidade",
+    "type": "group",
+    "expanded": true,
+    "children": [
+      {
+        "id": "carga_horaria",
+        "name": "carga_horaria",
+        "label": "Carga horária",
+        "type": "text",
+        "default": "432h"
+      },
+      {
+        "id": "modalidade",
+        "name": "modalidade",
+        "label": "Modalidade",
+        "type": "text",
+        "default": "On-line e Ao vivo"
+      },
+      {
+        "id": "cor_carga_box",
+        "name": "cor_carga_box",
+        "label": "Cor do box",
+        "type": "color",
+        "default": { "color": "#D71C37", "opacity": 100 }
+      },
+      {
+        "id": "cor_texto_carga",
+        "name": "cor_texto_carga",
+        "label": "Cor do texto",
+        "type": "color",
+        "default": { "color": "#FFFFFF", "opacity": 100 }
+      },
+      {
+        "id": "peso_carga",
+        "name": "peso_carga",
+        "label": "Peso da fonte",
+        "type": "choice",
+        "display": "select",
+        "choices": [["400", "Regular"], ["500", "Medium"], ["600", "SemiBold"], ["700", "Bold"], ["800", "Extra Bold"]],
+        "default": "700"
+      },
+      {
+        "id": "arredondamento_carga",
+        "name": "arredondamento_carga",
+        "label": "Arredondamento do box (px)",
+        "type": "number",
+        "display": "slider",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "suffix": "px",
+        "default": 14
+      }
+    ]
+  },
+  {
+    "id": "grupo_logo",
+    "name": "grupo_logo",
+    "label": "Logo",
+    "type": "group",
+    "expanded": true,
+    "children": [
+      {
+        "id": "logo",
+        "name": "logo",
+        "label": "Logo (canto inferior direito)",
+        "help_text": "Upload ou biblioteca.",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "default": { "src": "", "alt": "" }
+      }
+    ]
+  },
+  {
+    "id": "grupo_layout",
+    "name": "grupo_layout",
+    "label": "Layout",
+    "type": "group",
+    "expanded": false,
+    "children": [
+      {
+        "id": "largura_maxima",
+        "name": "largura_maxima",
+        "label": "Largura máxima (px)",
+        "type": "number",
+        "display": "text",
+        "min": 360,
+        "max": 1000,
+        "step": 10,
+        "suffix": "px",
+        "default": 600
+      }
+    ]
+  },
+  {
+    "id": "ancora",
+    "name": "ancora",
+    "label": "Âncora",
+    "help_text": "ID único da seção. Ex: prj-capa-pos-mba",
+    "type": "text",
+    "default": "prj-capa-pos-mba"
+  }
+]
