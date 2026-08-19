@@ -1,0 +1,14 @@
+{
+  "label": "PRJ - Capa - PÓS E MBA",
+  "help_text": "Capa Pós/MBA: mosaico de 3 imagens com efeitos, selo PÓS/MBA, título auto-ajustável, carga/modalidade e logo.",
+  "host_template_types": ["PAGE"],
+  "global": false,
+  "is_available_for_new_content": true,
+  "smart_type": "NOT_SMART",
+  "css_assets": [],
+  "js_assets": [],
+  "external_js": [],
+  "other_assets": [],
+  "tags": [],
+  "content_tags": []
+}

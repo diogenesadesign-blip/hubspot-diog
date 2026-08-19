@@ -1,0 +1,111 @@
+{# ============================================================= #}
+{#  PRJ - Capa - PÓS E MBA · v1.0                                #}
+{#  Mosaico de 3 imagens (efeitos multiply) + selo + título      #}
+{#  (auto-fit) + carga/modalidade + logo.                        #}
+{#  HubL + CSS; o auto-fit do título fica no module.js (CSP-safe).#}
+{# ============================================================= #}
+
+{% macro rad(b, c) -%}
+{%- set m = (b / 3)|round|int -%}
+{%- if c == 'tl' -%}{{ m }}px {{ b }}px {{ b }}px {{ b }}px
+{%- elif c == 'tr' -%}{{ b }}px {{ m }}px {{ b }}px {{ b }}px
+{%- elif c == 'br' -%}{{ b }}px {{ b }}px {{ m }}px {{ b }}px
+{%- else -%}{{ b }}px {{ b }}px {{ b }}px {{ m }}px
+{%- endif -%}
+{%- endmacro %}
+
+{% set ancora  = module.ancora|default('prj-capa-pos-mba') %}
+{% set base    = module.grupo_imagens.arredondamento|default(34) %}
+{% set c1      = module.grupo_imagens.canto_shape1|default('bl') %}
+{% set c2      = module.grupo_imagens.canto_shape2|default('bl') %}
+{% set c3      = module.grupo_imagens.canto_shape3|default('bl') %}
+{% set op2     = module.grupo_imagens.opacidade_efeito2|default(55) %}
+{% set cor3    = module.grupo_imagens.cor_efeito3.color|default('#F0AD42') %}
+{% set op3     = module.grupo_imagens.opacidade_efeito3|default(60) %}
+{% set r_selo  = module.grupo_selo.arredondamento_selo|default(14) %}
+{% set r_carga = module.grupo_carga.arredondamento_carga|default(14) %}
+{% set largura = module.grupo_layout.largura_maxima|default(600) %}
+
+<section id="{{ ancora }}" class="prj-posmba">
+  <div class="prj-posmba__capa" style="max-width:{{ largura }}px">
+
+    <div class="prj-posmba__mosaico">
+      <div class="prj-posmba__slot prj-posmba__slot--1"
+           style="border-radius:{{ rad(base, c1) }};{% if module.grupo_imagens.imagem1.src %}background-image:url('{{ module.grupo_imagens.imagem1.src }}');{% endif %}"
+           role="img" aria-label="{{ module.grupo_imagens.imagem1.alt|default('') }}"></div>
+
+      <div class="prj-posmba__slot prj-posmba__slot--2"
+           style="border-radius:{{ rad(base, c2) }};{% if module.grupo_imagens.imagem2.src %}background-image:url('{{ module.grupo_imagens.imagem2.src }}');{% endif %}"
+           role="img" aria-label="{{ module.grupo_imagens.imagem2.alt|default('') }}">
+        <div class="prj-posmba__fx" style="background:#D71C37;opacity:{{ op2 / 100 }}"></div>
+      </div>
+
+      <div class="prj-posmba__slot prj-posmba__slot--3"
+           style="border-radius:{{ rad(base, c3) }};{% if module.grupo_imagens.imagem3.src %}background-image:url('{{ module.grupo_imagens.imagem3.src }}');{% endif %}"
+           role="img" aria-label="{{ module.grupo_imagens.imagem3.alt|default('') }}">
+        <div class="prj-posmba__fx" style="background:{{ cor3 }};opacity:{{ op3 / 100 }}"></div>
+      </div>
+    </div>
+
+    <div class="prj-posmba__overlay">
+      <div class="prj-posmba__amber" style="background:{{ module.grupo_titulo.cor_box.color|default('#F0AD42') }};border-radius:{{ rad(base, 'bl') }}">
+
+        <div class="prj-posmba__selo"
+             style="background:{{ module.grupo_selo.cor_selo.color|default('#D71C37') }};color:{{ module.grupo_selo.cor_texto_selo.color|default('#FFFFFF') }};font-weight:{{ module.grupo_selo.peso_selo|default('800') }};border-radius:{{ rad(r_selo, 'bl') }}">{{ module.grupo_selo.tipo|default('MBA') }}</div>
+
+        <div class="prj-posmba__amber-inner">
+          <div class="prj-posmba__title" style="color:{{ module.grupo_titulo.cor_titulo.color|default('#FFFFFF') }};font-weight:{{ module.grupo_titulo.peso_titulo|default('800') }}">{{ module.grupo_titulo.titulo }}</div>
+        </div>
+
+        {% if module.grupo_carga.carga_horaria or module.grupo_carga.modalidade %}
+          <div class="prj-posmba__carga"
+               style="background:{{ module.grupo_carga.cor_carga_box.color|default('#D71C37') }};color:{{ module.grupo_carga.cor_texto_carga.color|default('#FFFFFF') }};font-weight:{{ module.grupo_carga.peso_carga|default('700') }};border-radius:{{ rad(r_carga, 'bl') }}">
+            {% if module.grupo_carga.carga_horaria %}<span>{{ module.grupo_carga.carga_horaria }}</span>{% endif %}
+            {% if module.grupo_carga.carga_horaria and module.grupo_carga.modalidade %}<span class="prj-posmba__sep"></span>{% endif %}
+            {% if module.grupo_carga.modalidade %}<span>{{ module.grupo_carga.modalidade }}</span>{% endif %}
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+
+    {% if module.grupo_logo.logo.src %}
+      <div class="prj-posmba__logo"><img src="{{ module.grupo_logo.logo.src }}" alt="{{ module.grupo_logo.logo.alt|default('Logo') }}" loading="lazy"></div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap');
+
+  .prj-posmba{ display:block; width:100%; }
+  .prj-posmba__capa{
+    container-type:inline-size; position:relative;
+    width:100%; max-width:600px; margin:0 auto; aspect-ratio:145/204;
+    font-family:'Barlow',system-ui,Arial,sans-serif;
+  }
+
+  .prj-posmba__mosaico{
+    position:absolute; top:0; left:0; right:0; height:72%;
+    display:grid; grid-template-columns:1.62fr 1fr; grid-template-rows:auto 1fr; gap:0;
+  }
+  .prj-posmba__slot{ position:relative; overflow:hidden; background-color:#4a4a4a; background-size:cover; background-position:center; }
+  .prj-posmba__slot--1{ grid-column:1; grid-row:1 / span 2; }
+  .prj-posmba__slot--2{ grid-column:2; grid-row:1; aspect-ratio:1; }
+  .prj-posmba__slot--3{ grid-column:2; grid-row:2; }
+  .prj-posmba__fx{ position:absolute; inset:0; mix-blend-mode:multiply; }
+
+  .prj-posmba__overlay{ position:absolute; left:5%; width:72%; bottom:8.5%; z-index:3; }
+
+  .prj-posmba__amber{ position:relative; width:100%; height:33cqw; }
+  .prj-posmba__selo{ position:absolute; top:-3.4cqw; left:4cqw; z-index:2; font-family:'Barlow',sans-serif; text-transform:uppercase; letter-spacing:.04em; font-size:3.2cqw; line-height:1; padding:1.3cqw 3.6cqw; }
+  .prj-posmba__amber-inner{ position:absolute; top:5cqw; left:4.5cqw; right:4.5cqw; bottom:9.5cqw; }
+  .prj-posmba__title{ font-family:'Barlow',sans-serif; text-transform:uppercase; line-height:1.02; letter-spacing:-.01em; font-size:6cqw; }
+
+  .prj-posmba__carga{ position:absolute; bottom:3cqw; left:-2cqw; z-index:2; font-family:'Barlow',sans-serif; font-size:3cqw; line-height:1; padding:1.5cqw 4cqw; display:flex; align-items:center; gap:2cqw; }
+  .prj-posmba__sep{ width:1px; height:1.1em; background:currentColor; opacity:.7; display:inline-block; }
+
+  .prj-posmba__logo{ position:absolute; right:4%; bottom:2.5%; z-index:3; }
+  .prj-posmba__logo img{ height:9cqw; width:auto; object-fit:contain; display:block; }
+</style>
