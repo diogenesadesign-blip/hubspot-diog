@@ -1,0 +1,20 @@
+name: Deploy de módulos
+
+on:
+  push:
+    branches: ["main"]        # strings sempre entre aspas no YAML
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      - name: Subir os módulos para o HubSpot
+        uses: HubSpot/hubspot-cms-deploy-action@v2.0.1
+        with:
+          src_dir: "SRC"
+          dest_dir: "modulos-ipog"
+          account_id: ${{ secrets.HUBSPOT_PORTAL_ID }}
+          personal_access_key: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
