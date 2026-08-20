@@ -1,0 +1,77 @@
+{# ============================================================
+   CR - Banner Curso · IPOG
+   Banner de curso: imagem trocável + textos em rich text +
+   badge de carga horária responsivo ao texto + logo por upload.
+   Fundo transparente (herda a cor da seção da landing page).
+   Prefixo de classe: crbc
+   ============================================================ #}
+
+{% set base        = module.arredondamento | default(28, true) %}
+{% set menor       = (base / 3) | round(0, 'ceil') %}
+{% set badge_base  = module.arredondamento_badge | default(9, true) %}
+{% set badge_menor = (badge_base / 3) | round(0, 'ceil') %}
+
+<div class="crbc-wrapper"
+     {% if module.ancora %}id="{{ module.ancora }}"{% endif %}
+     style="
+       --crbc-cor-titulo: {{ module.cor_do_titulo.color | default('#d71c37') }};
+       --crbc-cor-badge: {{ module.cor_do_badge.color | default('#8a212e') }};
+       --crbc-cor-badge-texto: {{ module.cor_texto_badge.color | default('#ffffff') }};
+       --crbc-cor-topicos: {{ module.cor_dos_topicos.color | default('#363636') }};
+       --crbc-cor-sobrelinha: {{ module.cor_da_sobrelinha.color | default('#363636') }};
+       --crbc-base: {{ base }}px;
+       --crbc-menor: {{ menor }}px;
+       --crbc-badge-base: {{ badge_base }}px;
+       --crbc-badge-menor: {{ badge_menor }}px;
+     ">
+
+  <div class="crbc-media">
+    {% if module.imagem.src %}
+      <img class="crbc-img"
+           src="{{ module.imagem.src }}"
+           alt="{{ module.imagem.alt | default('') }}"
+           {% if module.imagem.width %}width="{{ module.imagem.width }}"{% endif %}
+           {% if module.imagem.height %}height="{{ module.imagem.height }}"{% endif %}
+           loading="lazy">
+    {% else %}
+      <div class="crbc-img crbc-img-fallback"></div>
+    {% endif %}
+  </div>
+
+  <div class="crbc-content">
+
+    {% if module.sobrelinha %}
+      <div class="crbc-sobrelinha">{{ module.sobrelinha }}</div>
+    {% endif %}
+
+    {% if module.titulo %}
+      <h2 class="crbc-titulo">{{ module.titulo }}</h2>
+    {% endif %}
+
+    {% if module.carga_horaria %}
+      <div class="crbc-badge-wrap">
+        <span class="crbc-badge">{{ module.carga_horaria }}</span>
+      </div>
+    {% endif %}
+
+    {% if module.itens %}
+      <ul class="crbc-lista">
+        {% for item in module.itens %}
+          {% if item.texto %}
+            <li class="crbc-item">{{ item.texto }}</li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if module.logo.src %}
+      <div class="crbc-logo-wrap">
+        <img class="crbc-logo"
+             src="{{ module.logo.src }}"
+             alt="{{ module.logo.alt | default('Logo') }}"
+             loading="lazy">
+      </div>
+    {% endif %}
+
+  </div>
+</div>

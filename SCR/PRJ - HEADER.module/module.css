@@ -1,0 +1,154 @@
+/* ============================================================
+   CR - Banner Curso · IPOG
+   Escopo por descendência de .crbc-wrapper. Valores dinâmicos
+   (cores, raios) chegam via CSS custom properties inline, então
+   múltiplas instâncias na mesma página não conflitam.
+   ============================================================ */
+
+.crbc-wrapper{
+  display:flex;
+  align-items:stretch;
+  gap:0;
+  width:100%;
+  overflow:hidden;
+  font-family:'Barlow','Segoe UI',system-ui,sans-serif;
+  background:transparent;
+}
+
+/* ---------- imagem (lado esquerdo) ---------- */
+.crbc-media{
+  flex:0 0 46%;
+  max-width:46%;
+  display:flex;
+}
+.crbc-img{
+  width:100%;
+  min-height:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  border-radius:var(--crbc-menor) var(--crbc-base) var(--crbc-base) var(--crbc-menor);
+}
+.crbc-img-fallback{
+  min-height:440px;
+  background:linear-gradient(135deg,#1a3a5a,#0d1f35);
+}
+
+/* ---------- conteúdo (lado direito) ---------- */
+.crbc-content{
+  flex:1 1 54%;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:16px;
+  padding:36px 12px 36px 44px;
+}
+
+/* sobrelinha */
+.crbc-sobrelinha{
+  font-size:19px;
+  font-weight:500;
+  line-height:1.3;
+  color:var(--crbc-cor-sobrelinha);
+}
+.crbc-sobrelinha strong,
+.crbc-sobrelinha b{font-weight:800;}
+.crbc-sobrelinha p{margin:0;}
+
+/* título */
+.crbc-titulo{
+  margin:0;
+  font-size:clamp(30px,3vw,46px);
+  font-weight:800;
+  line-height:1.04;
+  letter-spacing:-0.01em;
+  color:var(--crbc-cor-titulo);
+}
+.crbc-titulo p{margin:0;}
+
+/* badge de carga horária — cresce/encolhe com o texto */
+.crbc-badge-wrap{display:flex;}
+.crbc-badge{
+  display:inline-block;
+  width:fit-content;
+  max-width:100%;
+  padding:11px 24px;
+  font-size:17px;
+  font-weight:700;
+  line-height:1.25;
+  color:var(--crbc-cor-badge-texto);
+  background:linear-gradient(135deg,
+      var(--crbc-cor-badge),
+      color-mix(in srgb, var(--crbc-cor-badge) 70%, #d71c37));
+  border-radius:var(--crbc-badge-base) var(--crbc-badge-base) var(--crbc-badge-base) var(--crbc-badge-menor);
+}
+
+/* lista de tópicos */
+.crbc-lista{
+  list-style:none;
+  margin:2px 0 0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.crbc-item{
+  position:relative;
+  padding-left:18px;
+  font-size:17px;
+  font-weight:500;
+  line-height:1.4;
+  color:var(--crbc-cor-topicos);
+}
+.crbc-item p{margin:0;display:inline;}
+.crbc-item::before{
+  content:"•";
+  position:absolute;
+  left:2px;
+  top:0;
+  color:var(--crbc-cor-topicos);
+}
+
+/* logo */
+.crbc-logo-wrap{margin-top:12px;}
+.crbc-logo{
+  display:block;
+  height:58px;
+  width:auto;
+  max-width:100%;
+}
+
+/* ---------- animação de entrada (só quando o JS ativa) ---------- */
+.crbc-wrapper.crbc-anim .crbc-media,
+.crbc-wrapper.crbc-anim .crbc-content > *{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .6s cubic-bezier(.22,1,.36,1),
+             transform .6s cubic-bezier(.22,1,.36,1);
+}
+.crbc-wrapper.crbc-anim.crbc-in .crbc-media,
+.crbc-wrapper.crbc-anim.crbc-in .crbc-content > *{
+  opacity:1;
+  transform:none;
+}
+.crbc-wrapper.crbc-anim.crbc-in .crbc-content > *:nth-child(1){transition-delay:.06s;}
+.crbc-wrapper.crbc-anim.crbc-in .crbc-content > *:nth-child(2){transition-delay:.13s;}
+.crbc-wrapper.crbc-anim.crbc-in .crbc-content > *:nth-child(3){transition-delay:.20s;}
+.crbc-wrapper.crbc-anim.crbc-in .crbc-content > *:nth-child(4){transition-delay:.27s;}
+.crbc-wrapper.crbc-anim.crbc-in .crbc-content > *:nth-child(5){transition-delay:.34s;}
+
+/* ---------- responsivo: empilha em telas menores ---------- */
+@media (max-width:820px){
+  .crbc-wrapper{flex-direction:column;}
+  .crbc-media,
+  .crbc-content{flex:none;max-width:100%;width:100%;}
+  .crbc-img{
+    border-radius:var(--crbc-menor) var(--crbc-menor) var(--crbc-base) var(--crbc-base);
+    min-height:0;
+    aspect-ratio:16/10;
+  }
+  .crbc-img-fallback{min-height:260px;aspect-ratio:16/10;}
+  .crbc-content{padding:28px 20px 8px;justify-content:flex-start;}
+  .crbc-titulo{font-size:clamp(26px,7vw,40px);}
+}
