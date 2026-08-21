@@ -1,0 +1,13 @@
+{
+  "label": "CR - Banner Curso",
+  "is_available_for_new_content": true,
+  "global": false,
+  "smart_type": "NOT_SMART",
+  "categories": ["MEDIA", "TEXT"],
+  "host_template_types": ["PAGE", "LANDING_PAGE", "BLOG_POST", "BLOG_LISTING"],
+  "content_tags": [],
+  "css_assets": [],
+  "js_assets": [],
+  "external_js": [],
+  "other_assets": []
+}
