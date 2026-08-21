@@ -1,6 +1,5 @@
 [
   {
-    "id": "crbc-imagem",
     "name": "imagem",
     "label": "Imagem",
     "help_text": "Imagem do lado esquerdo do banner. Substituível a qualquer momento.",
@@ -17,7 +16,6 @@
     }
   },
   {
-    "id": "crbc-ancora",
     "name": "ancora",
     "label": "Ancora (ID do bloco)",
     "help_text": "Opcional. ID para ancoragem/links internos (ex.: elp). Sem espacos ou acentos.",
@@ -27,7 +25,6 @@
     "default": ""
   },
   {
-    "id": "crbc-sobrelinha",
     "name": "sobrelinha",
     "label": "Sobrelinha",
     "help_text": "Texto acima do titulo. Use negrito para destacar (ex.: EaD).",
@@ -38,7 +35,6 @@
     "default": "Curso de Extensão Universitária | <strong>EaD</strong>"
   },
   {
-    "id": "crbc-titulo",
     "name": "titulo",
     "label": "Titulo",
     "help_text": "Titulo principal do curso.",
@@ -49,7 +45,6 @@
     "default": "Executive Leadership Program (ELP)"
   },
   {
-    "id": "crbc-carga-horaria",
     "name": "carga_horaria",
     "label": "Carga horaria (badge)",
     "help_text": "Texto do selo. A caixa acompanha o tamanho do texto automaticamente.",
@@ -59,7 +54,6 @@
     "default": "30h de formação executiva"
   },
   {
-    "id": "crbc-itens",
     "name": "itens",
     "label": "Itens (topicos)",
     "help_text": "Lista de destaques. Adicione ou remova quantos quiser.",
@@ -68,7 +62,6 @@
     "type": "group",
     "occurrence": {
       "min": 0,
-      "max": null,
       "default": 3
     },
     "default": [
@@ -78,7 +71,6 @@
     ],
     "children": [
       {
-        "id": "crbc-item-texto",
         "name": "texto",
         "label": "Texto",
         "required": false,
@@ -90,7 +82,6 @@
     ]
   },
   {
-    "id": "crbc-logo",
     "name": "logo",
     "label": "Logo",
     "help_text": "Logotipo exibido abaixo dos topicos. Recomendado SVG com textos convertidos em curvas.",
@@ -107,7 +98,6 @@
     }
   },
   {
-    "id": "crbc-cor-titulo",
     "name": "cor_do_titulo",
     "label": "Cor do titulo",
     "required": false,
@@ -116,7 +106,6 @@
     "default": { "color": "#d71c37", "opacity": 100 }
   },
   {
-    "id": "crbc-cor-badge",
     "name": "cor_do_badge",
     "label": "Cor do badge",
     "required": false,
@@ -125,7 +114,6 @@
     "default": { "color": "#8a212e", "opacity": 100 }
   },
   {
-    "id": "crbc-cor-texto-badge",
     "name": "cor_texto_badge",
     "label": "Cor do texto do badge",
     "required": false,
@@ -134,7 +122,6 @@
     "default": { "color": "#ffffff", "opacity": 100 }
   },
   {
-    "id": "crbc-cor-topicos",
     "name": "cor_dos_topicos",
     "label": "Cor dos topicos",
     "required": false,
@@ -143,7 +130,6 @@
     "default": { "color": "#363636", "opacity": 100 }
   },
   {
-    "id": "crbc-cor-sobrelinha",
     "name": "cor_da_sobrelinha",
     "label": "Cor da sobrelinha",
     "required": false,
@@ -152,7 +138,6 @@
     "default": { "color": "#363636", "opacity": 100 }
   },
   {
-    "id": "crbc-arredondamento",
     "name": "arredondamento",
     "label": "Arredondamento da imagem (px)",
     "help_text": "Raio do canto maior da imagem. O canto menor usa 1/3 deste valor.",
@@ -166,7 +151,6 @@
     "default": 28
   },
   {
-    "id": "crbc-arredondamento-badge",
     "name": "arredondamento_badge",
     "label": "Arredondamento do badge (px)",
     "help_text": "Raio do badge de carga horaria. O canto menor usa 1/3 deste valor.",
